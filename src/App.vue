@@ -13,7 +13,9 @@ export default {
     deals: []
   }),
   mounted() {
-    fetch("https://vovachegotov.amocrm.ru/api/v4/leads")
+    fetch("https://vovachegotov.amocrm.ru/api/v4/leads",{
+      mode: 'no-cors'
+    })
       .then((response) => response.json())
       .then((json) => {console.log(json),
       this.deals = json})
