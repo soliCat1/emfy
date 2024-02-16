@@ -1,19 +1,22 @@
 <template>
   <div>
-    <span></span>
+    <span>{{ deals }}</span>
     <span></span>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "App",
+  data: () => ({
+    deals: []
+  }),
   mounted() {
     fetch("https://vovachegotov.amocrm.ru/api/v4/leads")
       .then((response) => response.json())
-      .then((json) => {console.log(json)})
+      .then((json) => {console.log(json),
+      this.deals = json})
       .catch(() => {
         alert("Server error");
       });
