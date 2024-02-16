@@ -1,17 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <span></span>
+    <span></span>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  mounted() {
+    fetch("https://vovachegotov.amocrm.ru/api/v4/leads")
+      .then((response) => response.json())
+      .then((json) => {console.log(json)})
+      .catch(() => {
+        alert("Server error");
+      });
+  },
+};
 </script>
 
 <style>
